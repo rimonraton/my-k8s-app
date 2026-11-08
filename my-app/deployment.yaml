@@ -16,7 +16,10 @@ spec:
     spec:
       containers:
       - name: web
-        image: nginx:alpine  # টেস্টের জন্য লাইটওয়েট ইমেজ, পরবর্তীতে আপনার ডকার ইমেজ নাম বসাতে পারেন
+        image: nginx:alpine
+        command: ["/bin/sh", "-c"]
+        args:
+          - echo "<h1 style='color:green;text-align:center;margin-top:20%;'>🚀 Hello Raton! Continuous Delivery with K8s & ArgoCD is LIVE! (v2.0)</h1>" > /usr/share/nginx/html/index.html && nginx -g 'daemon off;'
         ports:
         - containerPort: 80
 ---
