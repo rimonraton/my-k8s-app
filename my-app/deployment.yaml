@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: ghcr.io/rimonraton/my-k8s-app:latest
+        image: ghcr.io/rimonraton/my-k8s-app:20da299b56ae688e2d172f3e67ac921ebc563c09
         ports:
         - containerPort: 3000
 ---
