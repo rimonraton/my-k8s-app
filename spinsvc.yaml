@@ -1,0 +1,32 @@
+apiVersion: spinnaker.io/v1alpha2
+kind: SpinnakerService
+metadata:
+  name: spinnaker
+  namespace: spinnaker
+spec:
+  spinnakerConfig:
+    config:
+      version: 1.28.0
+      persistentStorage:
+        persistentStoreType: s3
+        s3:
+          bucket: spinnaker
+          endpoint: http://minio-service.spinnaker:9000
+          accessKeyId: spinnakeradmin
+          secretAccessKey: spinnakerpassword
+          pathStyleAccess: true
+      providers:
+        kubernetes:
+          enabled: true
+          accounts:
+          - name: local-k8s
+            requiredGroupMembership: []
+            providerVersion: V2
+            permissions: {}
+            serviceAccount: true
+            namespaces:
+            - default
+  expose:
+    type: service
+    service:
+      type: ClusterIP
